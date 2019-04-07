@@ -1,0 +1,13 @@
+.mtg-home h3 {
+    padding-top:5px;
+}
+.mtg-home ul {
+    padding: 0 0 0 15px;
+}
+.mtg-home .main-content {
+    padding: 5px 0 0 10px;
+}
+.mtg-home .small-note {
+    font-size: 16px;
+    font-style:italic;
+}

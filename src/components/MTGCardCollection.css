@@ -1,0 +1,17 @@
+.mtg-card-collection {
+    margin: 15px 0 0 0;
+}
+.mtg-card-collection table tr td {
+    text-align:left;
+}
+label {
+    float:left;
+    font-size: 16px;    
+    margin: 0 20px 0 0;
+}
+input[type="checkbox"] {
+   width: 20px;
+   height: 20px;
+   float:left;
+   margin: 5px 3px 0 0;
+}

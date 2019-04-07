@@ -1,0 +1,39 @@
+.mtgcard {
+    margin: 15px 0 0 0;
+}
+@media screen and (max-width: 39.9375em) {
+    .mtgcard .card-data { 
+        margin-top:10px;
+    }
+    .mtgcard .card-data tr td:first-child {
+        font-size:14px;
+    }
+}
+@media screen and (min-width: 39.9375em) {
+    .mtgcard .card-data {
+        padding: 0 0 0 15px;
+    }
+}
+.mtgcard .card-heading {
+    background-color:#000000;    
+    text-align:center;    
+    padding:5px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+.mtgcard .card-heading .card-title {
+    font-size:24px;
+    color:#ffffff;
+}
+.mtgcard .card-heading .card-subtitle {
+    font-size:16px;
+    color:#e1e1e1;
+}
+.mtgcard table tbody tr td:first-child {
+    font-weight:bold;
+    text-align:right;    
+}
+.mtgcard table thead th {
+    height:0px;
+    padding:0;   
+}

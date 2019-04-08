@@ -15,6 +15,6 @@ The application allows you to view a collection of [MTG (Magic the Gathering)](h
 
 ### Install / Run
 To run this application you'll first need to install Node if you haven' t done so already [https://nodejs.org/en/](https://nodejs.org/en/)
-1. clone the repository
+1. Clone the repository
 2. From the command line run **npm install**
 3. Once the modules have completed installing, run **npm start**

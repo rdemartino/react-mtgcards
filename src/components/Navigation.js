@@ -2,7 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
 
-//layout/design from https://foundation.zurb.com/building-blocks/blocks/topbar-responsive.html
+/**
+ * Functional component 
+ * Provides the navigation for all pages and uses the Link
+ * object from react-router to create routes that are handled within
+ * the app class.
+ * layout/design from https://foundation.zurb.com/building-blocks/blocks/topbar-responsive.html
+ * @param {*} props 
+ */
 const Navigation = (props) => (
     <nav className="top-bar topbar-responsive">
         <div className="top-bar-title">
@@ -23,5 +30,4 @@ const Navigation = (props) => (
         </div>
     </nav>
 )
-
 export default Navigation;

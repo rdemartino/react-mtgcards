@@ -6,6 +6,12 @@ const CARDFILTEROPTIONS = ["Land", "Creature", "Token", "Sorcery", "Planeswalker
 
 export default class MTGCardCollection extends React.Component {
 
+    /**
+     * Sets up state by loading the "filter by" value(s) 
+     * maintained in localStorage, or initializing it to 
+     * an empty array, then binds the handleCardTypeChange 
+     * event handler so that "this" has scope.
+     */
     constructor(props) {
         super(props);
         var storedFilter = localStorage.getItem("cardFilter") === null ? [] : JSON.parse(localStorage.getItem("cardFilter"));
@@ -13,8 +19,11 @@ export default class MTGCardCollection extends React.Component {
             filterBy: storedFilter
         }
         this.handleCardTypeChange = this.handleCardTypeChange.bind(this);
-    }
-
+    }    
+    /**
+     * Returns a filtered array of MTG Card objects using 
+     * the filterBy values that are stored within the state.
+     */
     cards() {
         var cards = this.props.cards;
         this.state.filterBy.map((filterItem) => {
@@ -26,16 +35,30 @@ export default class MTGCardCollection extends React.Component {
             return(0);
         });
     }
-
+    /**
+     * This is a helper function that creates a label enclosed 
+     * checkbox input element using the value (val) and key 
+     * provided by the calling map function.  
+     */
     createFilterCheckbox = (val, key) =>  (
         <label key={key}>
             {val}
             <input type="checkbox" value={val} onChange={this.handleCardTypeChange} checked={this.state.filterBy.includes(val)} />
         </label>
     );
-
+    /**
+     * Iterates over the Filter option array and builds 
+     * checkbox elements for each item.
+     */
     createFilterCheckboxes = ()  => CARDFILTEROPTIONS.map(this.createFilterCheckbox);
-
+    /**
+     * This event handler is called whenever a
+     * filter by checkbox value changes.  This function
+     * updates the both the state maintained filterBy value
+     * and the localStorage value for persistence across
+     * requests.
+     * @param {event} e 
+     */
     handleCardTypeChange(e) {
         const filter = this.state.filterBy;
         if (e.target.checked) {
@@ -48,7 +71,9 @@ export default class MTGCardCollection extends React.Component {
         localStorage.setItem("cardFilter", JSON.stringify(filter));   
         this.setState({filterBy: filter});
     }
-
+    /**
+     * Renders this component
+     */
     render() {
         const mtgCards = this.cards();
         const ui = mtgCards.map((card) =>
@@ -65,62 +90,38 @@ export default class MTGCardCollection extends React.Component {
         );        
         return(
             <div className="mtg-card-collection">
-
-            <div className="grid-x">
-                <div className="cell small-12 text-left">
-                    <a href="/">Home</a>
-                </div>
-            </div>
-
-            <div className="grid-x topspace">
-                <div className="cell small-12 medium-12 text-left">
-                    <h4>Filter cards by:</h4>
-                    <form>
-                        {this.createFilterCheckboxes()}                        
-                    </form>
-                </div>
-            </div>
-
-
-            <div className="grid-x mtg-card-collection">
-                <div className="cell small-12 medium-12">
-                    <div className="text-right text-small">
-                        Total: {mtgCards.length}
+                <div className="grid-x">
+                    <div className="cell small-12 text-left">
+                        <a href="/">Home</a>
                     </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <td width="200">Name</td>                              
-                                <td width="800"></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {ui}
-                        </tbody>
-                    </table>
                 </div>
-            </div>
+                <div className="grid-x topspace">
+                    <div className="cell small-12 medium-12 text-left">
+                        <h4>Filter cards by:</h4>
+                        <form>
+                            {this.createFilterCheckboxes()}
+                        </form>
+                    </div>
+                </div>
+                <div className="grid-x mtg-card-collection">
+                    <div className="cell small-12 medium-12">
+                        <div className="text-right text-small">
+                            Total: {mtgCards.length}
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td width="200">Name</td>
+                                    <td width="800"></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {ui}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         );
     }
 }
-
-// const MTGCardCollection = (props) => {
-//     const mtgCards = props.cards;
-//     const ui = mtgCards.map((card) =>
-//         <div key={card.id} className="grid-x">
-//             <div className="cell small-4 text-align-left">
-//                 <Link to={`/card/${card.id}`}>
-//                     {card.name}
-//                 </Link>
-//             </div>
-//             <div className="cell small-8">
-//                 More info
-//         </div>
-//         </div>
-//     );
-//     console.log(mtgCards);
-//     return(ui);
-// }
-
-//export default MTGCardCollection;

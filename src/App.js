@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom' /* Demonstrates import renaming using 'as'  */
 import './App.css';
-import { HeroHeader } from './components/HeroHeader'
+import { HeroHeader } from './components/HeroHeader' /* Demonstrates a 'named' export */
 import MtgCard from './components/MTGCard'
 import MTGCardCollection from './components/MTGCardCollection';
 import Navigation from './components/Navigation'
 import MTGHome from './components/MTGHome';
 import allCards from './data/scryfall-default-cards.json';
 
+/**
+ * Main component / container for the
+ * application.
+ */
 class App extends Component {
   constructor(props) {
     super(props);
@@ -16,13 +20,21 @@ class App extends Component {
       cards: []
     }
   }
-
+  /**
+   * Once everything is ready to run, 
+   * Assign the imported allCards (JSON) 
+   * object collection to state.cards
+   */
   componentWillMount() {
     this.setState( {      
       cards: allCards
     })
   }
-
+  /**
+   * Handles rendering components and content to
+   * the screen, as well as maintaining all routing 
+   * through 
+   */
   render() {
     return (      
       <Router>
@@ -64,5 +76,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;

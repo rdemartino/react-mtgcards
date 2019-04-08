@@ -3,6 +3,11 @@ import './MTGHome.css'
 import reactLogo from './../images/logo-react.png'
 import mtgCardBack from './../images/mtgcard-back.jpg';
 
+/**
+ * Functional component
+ * This component makes use of imported graphics, 
+ * and styles, as well as inline styles.
+ */
 const MTGHome = () => 
     <div className="grid-x topspace mtg-home">
         <div className="cell small-12 text-center">

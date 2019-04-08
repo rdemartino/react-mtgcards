@@ -4,9 +4,16 @@ import './MTGCard.css'
 
 export default class MtgCard extends React.Component {
 
+    /**
+     * Helper property to return the MTGCard object
+     * that was provided as a prop.
+     */
     get card() {
         return this.props.card;
     }
+    /**
+     * Renders this component
+     */
     render() {
         return (
             <div>

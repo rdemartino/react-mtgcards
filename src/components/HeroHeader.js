@@ -11,3 +11,4 @@ export const HeroHeader = () =>
             <h5>Just a web app created to learn React</h5>
         </div>
     </div>
+    
